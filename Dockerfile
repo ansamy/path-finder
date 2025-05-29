@@ -7,6 +7,7 @@ COPY . .
 RUN apt -qq update &&\
     apt install -qq -y curl &&\
     rm -rf /var/lib/apt/lists/* &&\
+    sed -i s/pyproj/pyproj==2.4.2/g requirements_coord.txt &&\
     pip install -r requirements_coord.txt
 
 # Workaround UnicodeDecodeError issue
